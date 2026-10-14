@@ -1,0 +1,364 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ELX Entertainment · Digital Solutions</title>
+<meta name="description" content="ELX Entertainment offers digital solutions for the entertainment industry.">
+<meta name="theme-color" content="#07090d">
+<meta property="og:title" content="ELX Entertainment · Digital Solutions">
+<meta property="og:description" content="Digital solutions for the entertainment industry.">
+<script>if ("scrollRestoration" in history) history.scrollRestoration = "manual";</script>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%2307090d'/%3E%3Ctext x='32' y='42' font-family='Georgia,serif' font-size='28' text-anchor='middle' fill='%23a8c3da'%3EELX%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500&family=IBM+Plex+Mono:wght@400&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,300&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#07090d; --navy-950:#0a1220; --navy-900:#0e1a2e; --navy-800:#16273f;
+  --line:#1f2f4a; --text:#e8ecf1; --muted:#8a96a8; --ice:#a8c3da;
+  --serif:"Newsreader",Georgia,"Times New Roman",serif;
+  --sans:"Hanken Grotesk",-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+  --pad:clamp(20px,5vw,64px);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--ink);color:var(--text);font:400 clamp(1rem,1.1vw,1.125rem)/1.6 var(--sans);-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1240px;margin:0 auto;padding:0 var(--pad)}
+.label{font:400 .75rem/1.4 var(--mono);text-transform:uppercase;letter-spacing:.14em;color:var(--muted)}
+em{font-style:italic}
+/* header */
+header{position:sticky;top:0;z-index:30;background:rgba(7,9,13,.0);border-bottom:1px solid transparent;transition:background .3s,border-color .3s}
+header.solido{background:var(--ink);border-color:var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:76px}
+.logo{display:block;line-height:0}
+.logo img{height:46px;width:auto;display:block}
+.logo b{font:400 1.5rem/1 var(--serif);letter-spacing:.02em}
+.logo b i{font:400 .72rem/1 var(--mono);font-style:normal;text-transform:uppercase;letter-spacing:.2em;color:var(--muted);margin-left:10px}
+.logo small{display:block;font:400 .66rem/1 var(--mono);text-transform:uppercase;letter-spacing:.3em;color:var(--ice);margin-top:7px}
+nav{display:flex;gap:30px}
+nav a{font-size:.9rem;color:var(--muted);position:relative;padding:6px 0;transition:color .2s}
+nav a:hover{color:var(--text)}
+/* sezioni */
+section{border-top:1px solid var(--line);padding:clamp(96px,14vw,184px) 0}
+.bg-950{background:var(--navy-950)} .bg-900{background:var(--navy-900)}
+.cols{display:grid;grid-template-columns:repeat(12,1fr);gap:24px}
+.idx{grid-column:1/4}
+.main{grid-column:5/13}
+h1{font:300 clamp(3rem,7.5vw,7.25rem)/.98 var(--serif);letter-spacing:-.025em}
+h2{font:300 clamp(2.25rem,4.5vw,4rem)/1.05 var(--serif);letter-spacing:-.02em}
+h3{font:400 clamp(1.5rem,2.2vw,2rem)/1.15 var(--serif)}
+.lead{font-size:clamp(1.15rem,1.5vw,1.375rem);color:#c4ccd8;max-width:58ch}
+p{max-width:58ch}
+/* hero */
+.hero{border-top:0;padding-top:clamp(56px,8vw,120px);padding-bottom:clamp(26px,3.5vw,46px);min-height:calc(100svh - 76px);display:flex}
+.hero .wrap{display:flex;flex-direction:column;flex:1;width:100%}
+.hero h1{max-width:13ch}
+.hero .lead{margin-top:40px;max-width:46ch}
+.cta{margin-top:44px;display:flex;gap:34px;flex-wrap:wrap;align-items:baseline}
+.lnk{display:inline-block;padding-bottom:4px;border-bottom:1px solid var(--ice);color:var(--text);transition:letter-spacing .25s}
+.lnk:hover{letter-spacing:.015em}
+.lnk.muted{border-color:var(--line);color:var(--muted)}
+.fatti{margin-top:auto;border-top:1px solid var(--line);padding-top:22px}      /* il carosello sta in fondo alla prima schermata */
+.cta{margin-bottom:clamp(56px,8vw,110px)}
+/* elenco dei prodotti che sappiamo realizzare: scorre lentamente, si ferma al passaggio del mouse */
+.ticker{display:flex;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+.giro{display:flex;flex:none;list-style:none;animation:scorri 60s linear infinite}
+.giro li{white-space:nowrap;padding-right:clamp(36px,4vw,64px);position:relative}
+.giro li::after{content:"/";position:absolute;right:calc(clamp(36px,4vw,64px) / 2 - 3px);color:var(--line)}
+.ticker:hover .giro{animation-play-state:paused}
+@keyframes scorri{to{transform:translateX(-100%)}}
+@media (prefers-reduced-motion:reduce){.ticker{-webkit-mask-image:none;mask-image:none;flex-wrap:wrap}.giro{animation:none;flex-wrap:wrap}.giro[aria-hidden]{display:none}}
+/* ledger */
+.ledger{margin-top:56px}
+.riga{display:grid;grid-template-columns:70px 1fr 1.8fr;gap:24px;align-items:baseline;padding:26px 0;border-top:1px solid var(--line);position:relative}
+.riga::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:1px;background:var(--ice);transform:scaleX(0);transform-origin:left;transition:transform .5s ease}
+.riga:hover::after{transform:scaleX(1)}
+.riga:last-child{border-bottom:1px solid var(--line)}
+.riga .n{font:400 .8rem var(--mono);color:var(--muted);transition:color .3s}
+.riga:hover .n{color:var(--text)}
+.riga p{color:#aab4c3;font-size:1rem}
+.riga .tag{font:400 .72rem var(--mono);text-transform:uppercase;letter-spacing:.1em;color:var(--muted);text-align:right}
+/* corpo di vetro blu (WebGL) */
+.hero{position:relative;overflow:hidden}
+.hero .wrap{position:relative;z-index:2}
+/* la sfera sta al centro dello spazio nero a destra del testo */
+.vetro{position:absolute;z-index:1;top:50%;left:56%;right:0;height:min(42vw,520px);margin-top:calc(min(42vw,520px) / -2);display:grid;place-items:center;pointer-events:none}
+.vetro canvas{width:min(40vw,500px);aspect-ratio:1;height:auto;display:block}
+/* la sfera vaga piano dentro il riquadro nero a destra: due oscillazioni lente e di durata diversa (52 s e 72 s, come il ritmo della forma e delle luci) */
+.vetro{--c:min(40vw,500px);animation:vaga-x 26s ease-in-out -9s infinite alternate}
+.vetro canvas{animation:vaga-y 36s ease-in-out -14s infinite alternate}
+@keyframes vaga-x{from{transform:translateX(calc(var(--c) * -.12))}to{transform:translateX(calc(var(--c) * .18))}}
+@keyframes vaga-y{from{transform:translateY(calc(var(--c) * -.27))}to{transform:translateY(calc(var(--c) * .11))}}
+@media (prefers-reduced-motion:reduce){.vetro,.vetro canvas{animation:none}}
+.vetro.senza-gl{border-radius:50%;left:auto;width:min(34vw,400px);height:min(34vw,400px);margin-top:calc(min(34vw,400px) / -2);right:12%;
+  background:radial-gradient(circle at 34% 28%,rgba(220,235,255,.9) 0 3%,rgba(120,170,240,.55) 9%,rgba(30,70,160,.55) 38%,rgba(6,18,50,.95) 72%);
+  box-shadow:inset -18px -22px 50px rgba(0,8,30,.8),inset 10px 12px 30px rgba(150,190,255,.25)}
+/* processo */
+.processo{position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:28px;margin-top:70px;padding-top:40px}
+.processo::before{content:"";position:absolute;left:0;right:0;top:0;height:1px;background:var(--line)}
+.step{position:relative}
+.step::before{content:"";position:absolute;top:-45px;left:0;width:1px;height:10px;background:var(--ice)}
+.step .label{display:block;margin-bottom:12px}
+.step h3{margin-bottom:10px}
+.step p{color:#aab4c3;font-size:.98rem}
+/* studio */
+.fondatori{display:grid;grid-template-columns:1fr 1fr;margin-top:56px}
+.fond{padding:6px 0 6px 0}
+.fond+.fond{border-left:1px solid var(--line);padding-left:clamp(24px,4vw,56px)}
+.fond .label{display:block;margin-top:8px}
+.studio-p{margin-top:36px;color:#aab4c3}
+/* contatto */
+.mail{display:inline-block;margin-top:34px;font:300 clamp(1.7rem,4.4vw,4rem)/1.1 var(--serif);letter-spacing:-.02em;border-bottom:1px solid var(--ice);padding-bottom:6px;overflow-wrap:anywhere}
+.contatto .label{margin-top:26px;display:block}
+footer{border-top:1px solid var(--line);padding:34px 0 46px}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:center}
+footer .logo-piede{height:38px;width:auto;display:block}
+/* reveal */
+.r{opacity:0;transform:translateY(8px);transition:opacity .7s cubic-bezier(.2,.6,.2,1),transform .7s cubic-bezier(.2,.6,.2,1)}
+.r.v{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.r{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}.riga::after,.st{transition:none}}
+/* desktop: la barra in alto e il carosello occupano tutta la larghezza dello schermo */
+@media (min-width:861px){
+  header .wrap,.hero .wrap{max-width:none}      /* titolo e logo partono dallo stesso margine */
+  .hero .fatti{width:100vw;margin-left:calc(50% - 50vw);align-self:stretch;padding-left:0}
+  .hero .fatti .giro:first-child{padding-left:var(--pad)}
+}
+/* mobile */
+@media (max-width:860px){
+  .idx{grid-column:1/-1;margin-bottom:6px} .main{grid-column:1/-1}
+  .nav{height:64px}
+  nav{gap:clamp(10px,3.4vw,16px)}
+  nav a{font-size:.72rem;letter-spacing:.02em;color:#7d889b;padding:10px 0}
+  .logo img{height:30px}
+  /* piè di pagina su telefono: logo piccolo a sinistra, "torna su" a destra, copyright sotto una linea sottile */
+  footer{padding:30px 0 calc(34px + env(safe-area-inset-bottom))}
+  footer .wrap{display:grid;grid-template-columns:1fr auto;align-items:center;row-gap:22px}
+  footer .logo-piede{grid-area:1/1;height:28px}
+  footer a.label{grid-area:1/2}
+  footer span.label{grid-area:2/1/3/3;border-top:1px solid var(--line);padding-top:16px;font-size:.68rem}
+  .vetro{--c:46vw}
+  .riga{grid-template-columns:1fr;gap:6px;padding:22px 0}
+  .riga .n{order:-1}
+  .vetro{left:auto;right:-2%;top:73%;width:66vw;height:66vw;margin-top:-33vw;opacity:.9}
+  /* sul telefono la sfera vaga su tutta la larghezza dello spazio libero (anche a sinistra), con poco movimento verticale */
+  @keyframes vaga-x{from{transform:translateX(-44vw)}to{transform:translateX(4vw)}}
+  @keyframes vaga-y{from{transform:translateY(-3vw)}to{transform:translateY(4vw)}}
+  .vetro canvas{width:100%}
+  .vetro.senza-gl{width:60vw;height:60vw;margin-top:-30vw;right:-6%}
+  .processo{grid-template-columns:1fr;gap:34px;margin-top:50px;padding-top:0;padding-left:26px}
+  .processo::before{top:0;bottom:0;left:0;right:auto;width:1px;height:auto}
+  .step::before{top:8px;left:-26px;width:10px;height:1px}
+  .fondatori{grid-template-columns:1fr}
+  .fond+.fond{border-left:0;border-top:1px solid var(--line);padding-left:0;margin-top:28px;padding-top:28px}
+}
+</style>
+</head>
+<body id="top">
+<header id="cima">
+  <div class="wrap nav">
+    <a class="logo" href="#top" aria-label="ELX Entertainment"><img src="logo-bianco.png" alt="ELX Entertainment" width="834" height="262"></a>
+    <nav id="nav" aria-label="Main">
+      <a href="#focus">Focus</a><a href="#process">Approach</a><a href="#studio">Studio</a><a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="vetro" id="vetro" aria-hidden="true"><canvas id="gl"></canvas></div>
+    <div class="wrap">
+      <h1 class="r">Digital solutions for <em>entertainment</em>.</h1>
+      <p class="lead r">We work with venues and operators in the entertainment industry on custom digital projects. From nightlife to hospitality and live events.</p>
+      <div class="cta r"><a class="lnk" href="#contact">Get in touch&nbsp;→</a><a class="lnk muted" href="#focus">Learn more</a></div>
+      <div class="fatti ticker r" aria-label="What we work on"><ul class="giro"><li class="label">Mobile apps</li><li class="label">Web platforms</li><li class="label">Custom software</li><li class="label">Digital experiences</li><li class="label">Operations tools</li><li class="label">Integrations & APIs</li><li class="label">Analytics & reporting</li><li class="label">Customer experience</li><li class="label">Automation</li><li class="label">Secure infrastructure</li><li class="label">Design systems</li><li class="label">Data & insights</li><li class="label">Support & maintenance</li></ul><ul class="giro" aria-hidden="true"><li class="label">Mobile apps</li><li class="label">Web platforms</li><li class="label">Custom software</li><li class="label">Digital experiences</li><li class="label">Operations tools</li><li class="label">Integrations & APIs</li><li class="label">Analytics & reporting</li><li class="label">Customer experience</li><li class="label">Automation</li><li class="label">Secure infrastructure</li><li class="label">Design systems</li><li class="label">Data & insights</li><li class="label">Support & maintenance</li></ul></div>
+    </div>
+  </section>
+
+  <section id="focus" class="bg-950">
+    <div class="wrap">
+      <div class="cols">
+        <div class="idx label r">01 — Focus</div>
+        <div class="main"><h2 class="r"><em>Shaped</em> around the people who run the night.</h2></div>
+      </div>
+      <div class="ledger r">
+        <div class="riga"><span class="n">01</span><h3>Strategy</h3><p>We start from how a venue actually works, then decide what is worth building.</p></div>
+        <div class="riga"><span class="n">02</span><h3>Design</h3><p>Clear, considered interfaces for the people who use them every day.</p></div>
+        <div class="riga"><span class="n">03</span><h3>Engineering</h3><p>Reliable, secure software built to last and to be maintained.</p></div>
+        <div class="riga"><span class="n">04</span><h3>Support</h3><p>We stay close after launch and keep things running as you grow.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="process">
+    <div class="wrap">
+      <div class="cols">
+        <div class="idx label r">02 — Approach</div>
+        <div class="main"><h2 class="r">From first idea to <em>launch</em>.</h2></div>
+      </div>
+      <div class="processo r">
+        <div class="step"><span class="label">01</span><h3>Listen</h3><p>We begin by understanding your venue and your goals.</p></div>
+        <div class="step"><span class="label">02</span><h3>Define</h3><p>Scope, timing and responsibilities agreed in writing.</p></div>
+        <div class="step"><span class="label">03</span><h3>Build</h3><p>Short cycles, with working results you can review.</p></div>
+        <div class="step"><span class="label">04</span><h3>Run</h3><p>Launch, support and changes over time.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="studio" class="bg-950">
+    <div class="wrap">
+      <div class="cols">
+        <div class="idx label r">03 — Studio</div>
+        <div class="main"><h2 class="r">Two founders. <em>No</em> layers.</h2></div>
+      </div>
+      <div class="fondatori r">
+        <div class="fond"><h3>Emanuele Solerio</h3><span class="label">Co-founder</span></div>
+        <div class="fond"><h3>Ludovico Fallace</h3><span class="label">Co-founder</span></div>
+      </div>
+      <p class="studio-p r">You work directly with the people who created the vision.</p>
+    </div>
+  </section>
+
+  <section id="contact" class="contatto">
+    <div class="wrap">
+      <div class="cols">
+        <div class="idx label r">04 — Contact</div>
+        <div class="main">
+          <h2 class="r">Let's talk.</h2>
+          <a class="mail r" href="mailto:info@elxentertainment.online?subject=ELX%20Entertainment">info@elxentertainment.online</a>
+          <span class="label r">We read and answer every message personally</span>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <img class="logo-piede" src="logo-bianco.png" alt="ELX Entertainment" width="834" height="262">
+    <span class="label">© 2026 ELX Entertainment</span>
+    <a class="label" href="#top">Back to top ↑</a>
+    <!-- When available, add here the company name, VAT number, registered office and a business email address -->
+  </div>
+</footer>
+
+<script>
+// si parte sempre dall'alto (anche dopo un ricaricamento o un link "#top")
+if (!location.hash || location.hash === '#top') { document.documentElement.style.scrollBehavior = 'auto'; scrollTo(0, 0); requestAnimationFrame(() => { scrollTo(0, 0); document.documentElement.style.scrollBehavior = ''; }); }
+addEventListener('pageshow', (e) => { if (e.persisted && (!location.hash || location.hash === '#top')) scrollTo(0, 0); });
+// header solido dopo lo scroll
+const h = document.getElementById('cima');
+const sc = () => h.classList.toggle('solido', scrollY > 20); sc(); addEventListener('scroll', sc, { passive: true });
+// comparsa graduale
+const el = [...document.querySelectorAll('.r')];
+if ('IntersectionObserver' in window) {
+  const o = new IntersectionObserver((v) => v.forEach((e) => { if (e.isIntersecting) { e.target.style.transitionDelay = (el.indexOf(e.target) % 4) * 80 + 'ms'; e.target.classList.add('v'); o.unobserve(e.target); } }), { threshold: .12 });
+  el.forEach((e) => o.observe(e));
+} else el.forEach((e) => e.classList.add('v'));
+
+// ---- corpo di vetro blu: sfera di vetro che si deforma lentamente (raymarching in WebGL) ----
+(function () {
+  const box = document.getElementById('vetro'), cv = document.getElementById('gl');
+  const gl = cv.getContext('webgl', { alpha: true, premultipliedAlpha: true, antialias: false, powerPreference: 'high-performance' });
+  if (!gl) { box.classList.add('senza-gl'); cv.remove(); return; }
+  const VS = 'attribute vec2 p;void main(){gl_Position=vec4(p,0.,1.);}';
+  const FS = `
+precision highp float;
+uniform vec2 uRes; uniform float uTime;
+vec3 mod289(vec3 x){return x-floor(x*(1./289.))*289.;}
+vec4 mod289(vec4 x){return x-floor(x*(1./289.))*289.;}
+vec4 permute(vec4 x){return mod289(((x*34.)+1.)*x);}
+vec4 tis(vec4 r){return 1.79284291400159-0.85373472095314*r;}
+float snoise(vec3 v){
+  const vec2 C=vec2(1.0/6.0,1.0/3.0); const vec4 D=vec4(0.0,0.5,1.0,2.0);
+  vec3 i=floor(v+dot(v,C.yyy)); vec3 x0=v-i+dot(i,C.xxx);
+  vec3 g=step(x0.yzx,x0.xyz); vec3 l=1.0-g; vec3 i1=min(g.xyz,l.zxy); vec3 i2=max(g.xyz,l.zxy);
+  vec3 x1=x0-i1+C.xxx; vec3 x2=x0-i2+C.yyy; vec3 x3=x0-D.yyy;
+  i=mod289(i);
+  vec4 p=permute(permute(permute(i.z+vec4(0.0,i1.z,i2.z,1.0))+i.y+vec4(0.0,i1.y,i2.y,1.0))+i.x+vec4(0.0,i1.x,i2.x,1.0));
+  float n_=0.142857142857; vec3 ns=n_*D.wyz-D.xzx;
+  vec4 j=p-49.0*floor(p*ns.z*ns.z); vec4 x_=floor(j*ns.z); vec4 y_=floor(j-7.0*x_);
+  vec4 x=x_*ns.x+ns.yyyy; vec4 y=y_*ns.x+ns.yyyy; vec4 h=1.0-abs(x)-abs(y);
+  vec4 b0=vec4(x.xy,y.xy); vec4 b1=vec4(x.zw,y.zw);
+  vec4 s0=floor(b0)*2.0+1.0; vec4 s1=floor(b1)*2.0+1.0; vec4 sh=-step(h,vec4(0.0));
+  vec4 a0=b0.xzyw+s0.xzyw*sh.xxyy; vec4 a1=b1.xzyw+s1.xzyw*sh.zzww;
+  vec3 p0=vec3(a0.xy,h.x); vec3 p1=vec3(a0.zw,h.y); vec3 p2=vec3(a1.xy,h.z); vec3 p3=vec3(a1.zw,h.w);
+  vec4 norm=tis(vec4(dot(p0,p0),dot(p1,p1),dot(p2,p2),dot(p3,p3)));
+  p0*=norm.x;p1*=norm.y;p2*=norm.z;p3*=norm.w;
+  vec4 m=max(0.6-vec4(dot(x0,x0),dot(x1,x1),dot(x2,x2),dot(x3,x3)),0.0); m=m*m;
+  return 42.0*dot(m*m,vec4(dot(p0,x0),dot(p1,x1),dot(p2,x2),dot(p3,x3)));
+}
+float map(vec3 p){
+  float t=uTime;
+  float amp=.085+.04*sin(t*.21);                             // resta una sfera: la forma ondeggia e si evolve piano
+  float d=length(p)-1.0;
+  d+=amp*snoise(p*.95+vec3(t*.09,t*.06,-t*.08));
+  d+=.02*sin(2.6*p.x+t*.5)*sin(2.3*p.y-t*.4)*sin(2.8*p.z+t*.35);
+  return d*.7;
+}
+vec3 nrm(vec3 p){vec2 e=vec2(.0025,-.0025);return normalize(e.xyy*map(p+e.xyy)+e.yyx*map(p+e.yyx)+e.yxy*map(p+e.yxy)+e.xxx*map(p+e.xxx));}
+vec3 env(vec3 d){
+  float a=uTime*.12; float c=cos(a), s=sin(a); d.xz=mat2(c,-s,s,c)*d.xz;   // le luci girano piano attorno al vetro
+  vec3 col=mix(vec3(.01,.03,.09),vec3(.10,.25,.55),smoothstep(-.7,.9,d.y));
+  // niente grandi riflessi tondi: sottili fessure di luce (come strisce da studio fotografico) che il vetro piega in archi
+  col+=vec3(.55,.75,1.)*smoothstep(.03,.0,abs(d.y-.38))*.95;
+  col+=vec3(.4,.62,1.)*smoothstep(.035,.0,abs(d.x*.95+d.z*.3+.55))*step(0.,d.z)*.8;
+  col+=vec3(.3,.5,1.)*smoothstep(.03,.0,abs(d.y+.55-d.x*.25))*.55;
+  col+=vec3(.12,.3,.85)*smoothstep(.5,.95,dot(d,normalize(vec3(-.1,-.85,.5))))*.5;
+  return col;
+}
+vec3 shade(vec3 p, vec3 rd){
+  vec3 n=nrm(p);
+  float fr=pow(1.-max(dot(n,-rd),0.),3.); float F=.03+.97*fr;
+  vec3 refl=env(reflect(rd,n));
+  vec3 rf=refract(rd,n,1./1.5);
+  float ti=.04;
+  for(int i=0;i<26;i++){float d=-map(p+rf*ti); if(d<.003)break; ti+=max(d,.025); if(ti>3.)break;}
+  vec3 pe=p+rf*ti; vec3 ne=-nrm(pe);
+  vec3 o=refract(rf,ne,1.5); if(dot(o,o)<.001) o=reflect(rf,ne);
+  vec3 tr=exp(-vec3(1.5,.7,.18)*ti*.95);                  // il vetro assorbe rosso e verde: resta il blu
+  vec3 refr=env(o)*tr*1.15+vec3(.015,.08,.28)*(1.-exp(-ti*1.3));
+  vec3 col=refr*(1.-F)+refl*F*.9+vec3(.08,.2,.5)*pow(fr,2.);
+  col=col/(1.+col*.28); return pow(col,vec3(.92));
+}
+void main(){
+  vec2 uv=(gl_FragCoord.xy*2.-uRes)/min(uRes.x,uRes.y);
+  vec3 ro=vec3(0.,0.,3.7); vec3 rd=normalize(vec3(uv*.5,-1.));
+  float b=dot(ro,rd); float c=dot(ro,ro)-1.7*1.7; float h=b*b-c;
+  if(h<=0.){gl_FragColor=vec4(0.);return;}
+  float t=-b-sqrt(h); bool hit=false; float minD=9.; vec3 pm=ro+rd*t;
+  for(int i=0;i<64;i++){vec3 p=ro+rd*t; float d=map(p); if(d<minD){minD=d;pm=p;} if(d<.0015){hit=true;break;} t+=d; if(t>6.)break;}
+  float px=3.7/min(uRes.x,uRes.y)*1.6;                       // ampiezza di un pixel nello spazio della scena
+  if(!hit){
+    float cov=1.-smoothstep(0.,px,minD);                     // bordo sfumato di un pixel: niente scalini
+    if(cov<=.01){gl_FragColor=vec4(0.);return;}
+    vec3 col=shade(pm,rd); gl_FragColor=vec4(col*cov,cov); return;
+  }
+  vec3 col=shade(ro+rd*t,rd);
+  gl_FragColor=vec4(col,1.);
+}`;
+  const sh = (type, src) => { const x = gl.createShader(type); gl.shaderSource(x, src); gl.compileShader(x); if (!gl.getShaderParameter(x, gl.COMPILE_STATUS)) { console.warn(gl.getShaderInfoLog(x)); return null; } return x; };
+  const vs = sh(gl.VERTEX_SHADER, VS), fs = sh(gl.FRAGMENT_SHADER, FS);
+  const pr = gl.createProgram(); if (!vs || !fs) { box.classList.add('senza-gl'); cv.remove(); return; }
+  gl.attachShader(pr, vs); gl.attachShader(pr, fs); gl.linkProgram(pr);
+  if (!gl.getProgramParameter(pr, gl.LINK_STATUS)) { box.classList.add('senza-gl'); cv.remove(); return; }
+  gl.useProgram(pr);
+  const buf = gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 3, -1, -1, 3]), gl.STATIC_DRAW);
+  const loc = gl.getAttribLocation(pr, 'p'); gl.enableVertexAttribArray(loc); gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
+  const uRes = gl.getUniformLocation(pr, 'uRes'), uTime = gl.getUniformLocation(pr, 'uTime');
+  gl.clearColor(0, 0, 0, 0);
+  let q = 1; const ridim = () => { const r = cv.getBoundingClientRect(), k = Math.min(devicePixelRatio || 1, 2) * q; const w = Math.max(200, Math.min(1000, Math.round(r.width * k))); if (cv.width !== w) { cv.width = w; cv.height = w; } gl.viewport(0, 0, cv.width, cv.height); };
+  const disegna = (t) => { gl.clear(gl.COLOR_BUFFER_BIT); gl.uniform2f(uRes, cv.width, cv.height); gl.uniform1f(uTime, t); gl.drawArrays(gl.TRIANGLES, 0, 3); };
+  ridim(); addEventListener('resize', ridim);
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) { disegna(4.0); return; }
+  let visibile = true, ultimo = 0, conta = 0, lenti = 0; const t0 = performance.now();
+  new IntersectionObserver((e) => { visibile = e[0].isIntersecting; }).observe(box);
+  const giro = (ora) => { requestAnimationFrame(giro); if (!visibile || document.hidden || ora - ultimo < 33) return; const i0 = performance.now(); disegna((ora - t0) / 1000 + 3); gl.finish(); lenti += (performance.now() - i0) > 40 ? 1 : 0; if (++conta === 24) { if (lenti > 14 && q > .6) { q *= .8; ridim(); } conta = 0; lenti = 0; } ultimo = ora; };
+  requestAnimationFrame(giro);
+})();
+</script>
+</body>
+</html>
