@@ -112,6 +112,8 @@ p{max-width:58ch}
 .studio-p{margin-top:36px;color:#aab4c3}
 /* contatto */
 .mail{display:inline-block;margin-top:34px;font:300 clamp(1.7rem,4.4vw,4rem)/1.1 var(--serif);letter-spacing:-.02em;border-bottom:1px solid var(--ice);padding-bottom:6px;overflow-wrap:anywhere}
+.mails{display:flex;flex-direction:column;align-items:flex-start;gap:14px;margin-top:34px}
+.mails .mail{margin-top:0;font-size:clamp(1.35rem,3.2vw,2.75rem)}
 .contatto .label{margin-top:26px;display:block}
 footer{border-top:1px solid var(--line);padding:34px 0 46px}
 footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:center}
@@ -227,7 +229,11 @@ footer .logo-piede{height:38px;width:auto;display:block}
         <div class="idx label r">04 — Contact</div>
         <div class="main">
           <h2 class="r">Let's talk.</h2>
-          <a class="mail r" href="mailto:info@elxentertainment.online?subject=ELX%20Entertainment">info@elxentertainment.online</a>
+          <div class="mails">
+            <a class="mail r" href="mailto:info@elxentertainment.com?subject=ELX%20Entertainment">info@elxentertainment.com</a>
+            <a class="mail r" href="mailto:info@elxentertainment.it?subject=ELX%20Entertainment">info@elxentertainment.it</a>
+            <a class="mail r" href="mailto:info@elxentertainment.online?subject=ELX%20Entertainment">info@elxentertainment.online</a>
+          </div>
           <span class="label r">We read and answer every message personally</span>
         </div>
       </div>
